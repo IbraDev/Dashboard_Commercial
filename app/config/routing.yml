@@ -1,0 +1,9 @@
+utilisateur:
+    resource: "@UtilisateurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+suivi_vente:
+    resource: "@SuiviVenteBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+

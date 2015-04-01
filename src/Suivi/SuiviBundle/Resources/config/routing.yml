@@ -1,0 +1,20 @@
+
+suivi_vente_admin:
+    path:     /admin
+    defaults: { _controller: SuiviVenteBundle:Default:admin }
+    
+suivi_vente_chef:
+    path:     /chef
+    defaults: { _controller: SuiviVenteBundle:Default:chef }
+    
+suivi_vente_sup:
+    path:     /sup
+    defaults: { _controller: SuiviVenteBundle:Default:sup }
+    
+suivi_vente_categ:
+    path:     /categorie
+    defaults: { _controller: SuiviVenteBundle:Categorie:send }
+    
+suivi_vente_list_categ:
+    path:     /list_categ
+    defaults: { _controller: SuiviVenteBundle:Categorie:list}
