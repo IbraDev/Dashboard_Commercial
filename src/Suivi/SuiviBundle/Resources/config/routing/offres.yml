@@ -1,0 +1,30 @@
+offres:
+    path:     /
+    defaults: { _controller: "SuiviVenteBundle:Offres:index" }
+
+offres_show:
+    path:     /{id}/show
+    defaults: { _controller: "SuiviVenteBundle:Offres:show" }
+
+offres_new:
+    path:     /new
+    defaults: { _controller: "SuiviVenteBundle:Offres:new" }
+
+offres_create:
+    path:     /create
+    defaults: { _controller: "SuiviVenteBundle:Offres:create" }
+    methods:  POST
+
+offres_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SuiviVenteBundle:Offres:edit" }
+
+offres_update:
+    path:     /{id}/update
+    defaults: { _controller: "SuiviVenteBundle:Offres:update" }
+    methods:  [POST, PUT]
+
+offres_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SuiviVenteBundle:Offres:delete" }
+    methods:  [POST, DELETE]

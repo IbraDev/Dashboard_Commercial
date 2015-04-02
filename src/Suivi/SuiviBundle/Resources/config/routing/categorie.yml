@@ -1,0 +1,30 @@
+categorie:
+    path:     /
+    defaults: { _controller: "SuiviVenteBundle:Categorie:index" }
+
+categorie_show:
+    path:     /{id}/show
+    defaults: { _controller: "SuiviVenteBundle:Categorie:show" }
+
+categorie_new:
+    path:     /new
+    defaults: { _controller: "SuiviVenteBundle:Categorie:new" }
+
+categorie_create:
+    path:     /create
+    defaults: { _controller: "SuiviVenteBundle:Categorie:create" }
+    methods:  POST
+
+categorie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SuiviVenteBundle:Categorie:edit" }
+
+categorie_update:
+    path:     /{id}/update
+    defaults: { _controller: "SuiviVenteBundle:Categorie:update" }
+    methods:  [POST, PUT]
+
+categorie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SuiviVenteBundle:Categorie:delete" }
+    methods:  [POST, DELETE]

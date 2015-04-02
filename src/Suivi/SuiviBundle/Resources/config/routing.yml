@@ -1,3 +1,11 @@
+suivi_vente_categorie:
+    resource: "@SuiviVenteBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie
+
+suivi_vente_offres:
+    resource: "@SuiviVenteBundle/Resources/config/routing/offres.yml"
+    prefix:   /offres
+
 
 suivi_vente_admin:
     path:     /admin
@@ -11,10 +19,5 @@ suivi_vente_sup:
     path:     /sup
     defaults: { _controller: SuiviVenteBundle:Default:sup }
     
-suivi_vente_categ:
-    path:     /categorie
-    defaults: { _controller: SuiviVenteBundle:Categorie:send }
+
     
-suivi_vente_list_categ:
-    path:     /list_categ
-    defaults: { _controller: SuiviVenteBundle:Categorie:list}
