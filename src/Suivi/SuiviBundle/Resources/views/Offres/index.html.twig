@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block body -%}
+{% block body %}
     <h1>Offres list</h1>
 
     <table class="records_list">
@@ -10,8 +10,7 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Status</th>
-                <th>Catégorie</th>
-                <th>Datecreation</th>
+                 <th>Catégorie</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,8 +21,7 @@
                 <td>{{ entity.nom }}</td>
                 <td>{{ entity.description }}</td>
                 <td>{{ entity.status }}</td>
-                  <td>{{ entity.categorie }}</td>
-                <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+               <td>{{ entity.categ.nom}}</td>
                 <td>
                 <ul>
                     <li>

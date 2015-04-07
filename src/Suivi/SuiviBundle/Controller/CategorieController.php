@@ -50,6 +50,7 @@ class CategorieController extends Controller
         return $this->render('SuiviVenteBundle:Categorie:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'action'=>"Ajouter"
         ));
     }
 
@@ -64,7 +65,7 @@ class CategorieController extends Controller
     {
         $form = $this->createForm(new CategorieType(), $entity);
         $form->add('submit', 'submit', array('label' => 'Ajouter'));
-
+      
         return $form;
     }
 
@@ -109,74 +110,34 @@ class CategorieController extends Controller
      * Displays a form to edit an existing Categorie entity.
      *
      */
-    public function editAction($id)
+    public function editAction(Categorie $categorie)
     {
         $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(new CategorieType(), $categorie);
+       
 
-        $entity = $em->getRepository('SuiviVenteBundle:Categorie')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categorie entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('SuiviVenteBundle:Categorie:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
-    * Creates a form to edit a Categorie entity.
-    *
-    * @param Categorie $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Categorie $entity)
-    {
-        $form = $this->createForm(new CategorieType(), $entity, array(
-            'action' => $this->generateUrl('categorie_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
-        return $form;
-    }
-    /**
-     * Edits an existing Categorie entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('SuiviVenteBundle:Categorie')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Categorie entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
+       $request=$this->getRequest();
+       if($request->isMethod('POST')){
+            $form->handleRequest($request);
+            
+        if ($form->isValid()) {
+           $categorie=$form->getData();
+            $em->persist($categorie);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('categorie_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('categorie_show', array('id' => $categorie->getId())));
         }
+}
 
         return $this->render('SuiviVenteBundle:Categorie:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'categorie' => $categorie,
+            'form'   => $form->createView(),
+            'action'=>"Editer"
         ));
     }
+
+   
+ 
     /**
      * Deletes a Categorie entity.
      *

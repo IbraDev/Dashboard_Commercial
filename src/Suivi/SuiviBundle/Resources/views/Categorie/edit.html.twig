@@ -118,8 +118,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Lister</a></li>
+                <li><a href="{{path('categorie_new')}}"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                <li><a href="{{path('categorie')}}"><i class="fa fa-circle-o"></i> Lister</a></li>
                
               </ul>
             </li>
@@ -176,7 +176,7 @@
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
             <li class="active">Gestion Catégories</li>
-            <li class="active">Ajouter</li>
+            <li class="active">Modifier</li>
           </ol>
         </section>
 
@@ -191,19 +191,38 @@
                   <h3 class="box-title">Modifier Catégorie</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-               
-             
-    {{ form(edit_form) }}
+            <form role="form" method="Post" action="{{path('categorie_edit',{id:categorie.id})}}">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="nom">Nom catégorie</label>
+                      {{form_widget(form.nom,{'attr':{'class':'form-control'}})}}
+                     
+                    </div>
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                  
+                       {{form_widget(form.description,{'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Date création</label>
+                     
+                     {{form_widget(form.dateCreation)}}
+                    </div>
+               <div class="box-footer">
+                      {{form_widget(form._token)}}
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                   
+                  </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('categorie') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-
+                
+                 
+                        <a href="{{ path('categorie') }}">
+                          <img src="{{asset("bundles/adminTemplate/img/MB__back.png")}}">
+                        </a>
+                    
+                
+                            </form>
+                
               </div><!-- /.box -->
 </section>
  </div>		  

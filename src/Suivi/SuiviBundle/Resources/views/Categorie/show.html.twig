@@ -118,8 +118,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Lister</a></li>
+                <li><a href="{{path('categorie_new')}}"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                <li><a href="{{path('categorie')}}"><i class="fa fa-circle-o"></i> Lister</a></li>
                
               </ul>
             </li>
@@ -176,7 +176,7 @@
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
             <li class="active">Gestion Catégories</li>
-            <li class="active">Ajouter</li>
+            <li class="active">Lister</li>
           </ol>
         </section>
 
@@ -187,7 +187,9 @@
             <div class="col-md-6">
               <!-- general form elements -->
               <div class="box box-primary">
+              
                 <div class="box-header">
+                 
                   <h3 class="box-title">Catégorie</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
@@ -196,37 +198,37 @@
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Id :</th>
                 <td>{{ entity.id }}</td>
-            </tr>
+            </tr>  
             <tr>
-                <th>Nom</th>
+                <th>Nom : </th>
                 <td>{{ entity.nom }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Description :</th>
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th>Datecreation</th>
+                <th>Datecreation :</th>
                 <td>{{ entity.dateCreation|date('Y-m-d') }}</td>
             </tr>
         </tbody>
-    </table>
+    </table></br>
 
-        <ul class="record_actions">
-    <li>
+        
+    
         <a href="{{ path('categorie') }}">
-            Back to the list
+           <img src="{{asset("bundles/adminTemplate/img/MB__back.png")}}">
         </a>
-    </li>
-    <li>
-        <a href="{{ path('categorie_edit', { 'id': entity.id }) }}">
-            Edit
+    
+          <a href="{{ path('categorie_edit', { 'id': entity.id }) }}">
+           <img src="{{asset("bundles/adminTemplate/img/edit.png")}}">
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        
+    
+    {{ form(delete_form) }}
+
               </div><!-- /.box -->
 </section>
  </div>		  

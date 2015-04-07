@@ -24,30 +24,23 @@ class Offres
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=125)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="text")
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=255)
+     * @ORM\Column(name="status", type="string", length=125)
      */
     private $status;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_creation", type="date")
-     */
-    private $dateCreation;
 
 
     /**
@@ -128,59 +121,33 @@ class Offres
     {
         return $this->status;
     }
+     /**
+     *
+     *@ORM\ManyToOne(targetEntity="Categorie",inversedBy="offre", cascade={"remove"})
+     *@ORM\JoinColumn(name="categ_id", referencedColumnName="id")
+     */
+    private $categ;
 
     /**
-     * Set dateCreation
+     * Set categ
      *
-     * @param \DateTime $dateCreation
+     * @param \Suivi\SuiviBundle\Entity\Categorie $categ
      * @return Offres
      */
-    public function setDateCreation($dateCreation)
+    public function setCateg(\Suivi\SuiviBundle\Entity\Categorie $categ = null)
     {
-        $this->dateCreation = $dateCreation;
+        $this->categ = $categ;
 
         return $this;
     }
 
     /**
-     * Get dateCreation
-     *
-     * @return \DateTime 
-     */
-    public function getDateCreation()
-    {
-        return $this->dateCreation;
-    }
-    
-    /**
-* @ORM\ManyToOne(targetEntity="Categorie", inversedBy="offres")
-* @ORM\JoinColumn(name="categ_id", referencedColumnName="id")
-*/
-public $categorie;
-
-  
-
-
-    /**
-     * Set categorie
-     *
-     * @param \Suivi\SuiviBundle\Entity\Categorie $categorie
-     * @return Offres
-     */
-    public function setCategorie(\Suivi\SuiviBundle\Entity\Categorie $categorie )
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    /**
-     * Get categorie
+     * Get categ
      *
      * @return \Suivi\SuiviBundle\Entity\Categorie 
      */
-    public function getCategorie()
+    public function getCateg()
     {
-        return $this->categorie;
+        return $this->categ;
     }
 }

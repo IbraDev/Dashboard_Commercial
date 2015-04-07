@@ -4,13 +4,16 @@ namespace Suivi\SuiviBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Suivi\SuiviBundle\Entity\Offres;
 use Suivi\SuiviBundle\Form\OffresType;
 
 /**
  * Offres controller.
  *
+ * @Route("/offres")
  */
 class OffresController extends Controller
 {
@@ -18,6 +21,9 @@ class OffresController extends Controller
     /**
      * Lists all Offres entities.
      *
+     * @Route("/", name="offres")
+     * @Method("GET")
+     * @Template()
      */
     public function indexAction()
     {
@@ -25,13 +31,16 @@ class OffresController extends Controller
 
         $entities = $em->getRepository('SuiviVenteBundle:Offres')->findAll();
 
-        return $this->render('SuiviVenteBundle:Offres:index.html.twig', array(
+        return array(
             'entities' => $entities,
-        ));
+        );
     }
     /**
      * Creates a new Offres entity.
      *
+     * @Route("/", name="offres_create")
+     * @Method("POST")
+     * @Template("SuiviVenteBundle:Offres:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -47,10 +56,10 @@ class OffresController extends Controller
             return $this->redirect($this->generateUrl('offres_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('SuiviVenteBundle:Offres:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
@@ -75,21 +84,27 @@ class OffresController extends Controller
     /**
      * Displays a form to create a new Offres entity.
      *
+     * @Route("/new", name="offres_new")
+     * @Method("GET")
+     * @Template()
      */
     public function newAction()
     {
         $entity = new Offres();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('SuiviVenteBundle:Offres:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
      * Finds and displays a Offres entity.
      *
+     * @Route("/{id}", name="offres_show")
+     * @Method("GET")
+     * @Template()
      */
     public function showAction($id)
     {
@@ -103,15 +118,18 @@ class OffresController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SuiviVenteBundle:Offres:show.html.twig', array(
+        return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
      * Displays a form to edit an existing Offres entity.
      *
+     * @Route("/{id}/edit", name="offres_edit")
+     * @Method("GET")
+     * @Template()
      */
     public function editAction($id)
     {
@@ -126,11 +144,11 @@ class OffresController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SuiviVenteBundle:Offres:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -154,6 +172,9 @@ class OffresController extends Controller
     /**
      * Edits an existing Offres entity.
      *
+     * @Route("/{id}", name="offres_update")
+     * @Method("PUT")
+     * @Template("SuiviVenteBundle:Offres:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -175,15 +196,17 @@ class OffresController extends Controller
             return $this->redirect($this->generateUrl('offres_edit', array('id' => $id)));
         }
 
-        return $this->render('SuiviVenteBundle:Offres:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
     /**
      * Deletes a Offres entity.
      *
+     * @Route("/{id}", name="offres_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {

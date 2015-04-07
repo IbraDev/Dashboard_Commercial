@@ -118,8 +118,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Lister</a></li>
+                <li><a href="{{path('categorie_new')}}"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                <li><a href="{{path('categorie')}}"><i class="fa fa-circle-o"></i> Lister</a></li>
                
               </ul>
             </li>
@@ -211,15 +211,16 @@
                <div class="box-footer">
                       {{form_widget(form._token)}}
                     <button type="submit" class="btn btn-primary">Ajouter</button>
+                   
                   </div>
 
-                <ul class="record_actions">
-                    <li>
+                
+                 
                         <a href="{{ path('categorie') }}">
-                            Back to the list
+                          <img src="{{asset("bundles/adminTemplate/img/MB__back.png")}}">
                         </a>
-                    </li>
-                </ul>
+                    
+                
                             </form>
               </div><!-- /.box -->
 </section>

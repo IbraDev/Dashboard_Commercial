@@ -36,23 +36,25 @@
       
       <header class="main-header">
         <!-- Logo -->
-        <a href="{{path('suivi_vente_admin')}}" class="logo"><b>Suivi</b>Vente</a>
+        <a href="{{path('suivi_vente_admin')}}" class="logo"><img src="{{asset("bundles/adminTemplate/img/logo4.png")}}"/></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only"> </span>
           </a>
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
+                
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
-             
+            
              
               <!-- Tasks: style can be found in dropdown.less -->
               
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
+                  
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="user-image" alt="User Image"/>
                   <span class="hidden-xs">Admin</span>
@@ -60,6 +62,7 @@
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
+                    
                     <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="img-circle" alt="User Image" />
                     <p>
                       Admin
@@ -70,7 +73,7 @@
                   
                   <!-- Menu Footer-->
                   <li class="user-footer">
-                    
+                     
                     <div class="pull-right">
                       <a href="#" class="btn btn-default btn-flat">Déconnexion</a>
                     </div>
@@ -78,8 +81,10 @@
                 </ul>
               </li>
             </ul>
+                    
           </div>
         </nav>
+                   
       </header>
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
@@ -118,8 +123,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{path('suivi_vente_categ')}}"><i class="fa fa-circle-o"></i> Ajouter</a></li>
-                <li><a href="{{path('suivi_vente_list_categ')}}"><i class="fa fa-circle-o"></i> Lister</a></li>
+                <li><a href="{{path('categorie_new')}}"><i class="fa fa-circle-o"></i> Ajouter</a></li>
+                <li><a href="{{path('categorie')}}"><i class="fa fa-circle-o"></i> Lister</a></li>
                
               </ul>
             </li>
@@ -180,6 +185,8 @@
         </section>
 
         <!-- Main content -->
+        {% block content %}
+            {%endblock  %}
         <section class="content">
           <!-- Info boxes -->
           <div class="row">

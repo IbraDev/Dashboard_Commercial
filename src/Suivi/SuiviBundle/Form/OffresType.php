@@ -18,10 +18,7 @@ class OffresType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('status')
-            ->add('dateCreation') 
-            -> add('categories', 'entity', array(
-    'class' => 'SuiviVenteBundle:Categorie',
-    'property' => 'nom',))
+            ->add('categ','entity', array('class' => 'SuiviVenteBundle:Categorie','property'=>'Nom'))
         ;
     }
     
