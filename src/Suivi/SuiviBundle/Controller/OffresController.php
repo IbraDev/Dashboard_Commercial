@@ -45,7 +45,7 @@ class OffresController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Offres();
-        $form = $this->createCreateForm($entity);
+       $form = $this->createForm(new OffresType(), $entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -56,10 +56,11 @@ class OffresController extends Controller
             return $this->redirect($this->generateUrl('offres_show', array('id' => $entity->getId())));
         }
 
-        return array(
+        return $this->render('SuiviVenteBundle:Offres:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+            'action'=>"Ajouter"
+        ));
     }
 
     /**
@@ -71,13 +72,9 @@ class OffresController extends Controller
      */
     private function createCreateForm(Offres $entity)
     {
-        $form = $this->createForm(new OffresType(), $entity, array(
-            'action' => $this->generateUrl('offres_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
+       $form = $this->createForm(new OffresType(), $entity);
+        $form->add('submit', 'submit', array('label' => 'Ajouter'));
+      
         return $form;
     }
 
@@ -131,25 +128,33 @@ class OffresController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
-    {
+    public function editAction(Offres $offres)
+   {
         $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(new OffresType(), $offres);
 
-        $entity = $em->getRepository('SuiviVenteBundle:Offres')->find($id);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Offres entity.');
+        $request = $this->getRequest();
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $offres = $form->getData();
+                $em->persist($offres);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('offres_show', array('id' => $offres->getId())));
+            }
         }
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return $this->render('SuiviVenteBundle:Offres:edit.html.twig', array(
+                    'categorie' => $offres,
+                    'form' => $form->createView(),
+                    'action' => "Editer"
+        ));
     }
+
+    
 
     /**
     * Creates a form to edit a Offres entity.

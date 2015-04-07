@@ -111,33 +111,31 @@ class CategorieController extends Controller
      *
      */
     public function editAction(Categorie $categorie)
-    {
+ {
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(new CategorieType(), $categorie);
-       
 
-       $request=$this->getRequest();
-       if($request->isMethod('POST')){
+
+        $request = $this->getRequest();
+        if ($request->isMethod('POST')) {
             $form->handleRequest($request);
-            
-        if ($form->isValid()) {
-           $categorie=$form->getData();
-            $em->persist($categorie);
-            $em->flush();
 
-            return $this->redirect($this->generateUrl('categorie_show', array('id' => $categorie->getId())));
+            if ($form->isValid()) {
+                $categorie = $form->getData();
+                $em->persist($categorie);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('categorie_show', array('id' => $categorie->getId())));
+            }
         }
-}
 
         return $this->render('SuiviVenteBundle:Categorie:edit.html.twig', array(
-            'categorie' => $categorie,
-            'form'   => $form->createView(),
-            'action'=>"Editer"
+                    'categorie' => $categorie,
+                    'form' => $form->createView(),
+                    'action' => "Editer"
         ));
     }
 
-   
- 
     /**
      * Deletes a Categorie entity.
      *

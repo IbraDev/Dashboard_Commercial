@@ -17,7 +17,9 @@ class OffresType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('status')
+            ->add('status', 'choice', array(
+					'choices'   => array('Active' => 'Activer', 'Desctive' => 'Desactiver'),
+					'required'  => false))
             ->add('categ','entity', array('class' => 'SuiviVenteBundle:Categorie','property'=>'Nom'))
         ;
     }
