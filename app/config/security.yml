@@ -1,8 +1,9 @@
 # you can read more about security in the related section of the documentation
 # http://symfony.com/doc/current/book/security.html
 
+   
 security:
-    # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+    
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
 
@@ -43,11 +44,14 @@ security:
             # it's important to notice that in this case _demo_security_check and _demo_login
             # are route names and that they are specified in the AcmeDemoBundle
             form_login:
-                check_path: _demo_security_check
-                login_path: _demo_login
+                provider:      fos_userbundle
+                csrf_provider: form.csrf_provider
+                check_path:    fos_user_security_check
+                login_path:    fos_user_security_login
+                default_target_path: /admin
             logout:
-                path:   _demo_logout
-                target: _demo
+                path:   fos_user_security_logout
+                target: /
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"

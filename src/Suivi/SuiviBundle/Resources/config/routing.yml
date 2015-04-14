@@ -6,9 +6,12 @@ suivi_vente_offres:
     resource: "@SuiviVenteBundle/Resources/config/routing/offres.yml"
     prefix:   /offres
 
-
+suivi_vente_index:
+    path:     /index
+    defaults: { _controller: SuiviVenteBundle:Default:index }
+    
 suivi_vente_admin:
-    path:     /admin
+    path:     /
     defaults: { _controller: SuiviVenteBundle:Default:admin }
     
 suivi_vente_chef:
