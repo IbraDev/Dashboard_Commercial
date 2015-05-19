@@ -1,30 +1,30 @@
-categorie:
+offres:
     path:     /
-    defaults: { _controller: "SuiviVenteBundle:Categorie:index" }
+    defaults: { _controller: "SuiviVenteBundle:Offres:index" }
 
-categorie_show:
+offres_show:
     path:     /{id}/show
-    defaults: { _controller: "SuiviVenteBundle:Categorie:show" }
+    defaults: { _controller: "SuiviVenteBundle:Offres:show" }
 
-categorie_new:
+offres_new:
     path:     /new
-    defaults: { _controller: "SuiviVenteBundle:Categorie:new" }
+    defaults: { _controller: "SuiviVenteBundle:Offres:new" }
 
-categorie_create:
+offres_create:
     path:     /create
-    defaults: { _controller: "SuiviVenteBundle:Categorie:create" }
+    defaults: { _controller: "SuiviVenteBundle:Offres:create" }
     methods:  POST
 
-categorie_edit:
+offres_edit:
     path:     /{id}/edit
-    defaults: { _controller: "SuiviVenteBundle:Categorie:edit" }
+    defaults: { _controller: "SuiviVenteBundle:Offres:edit" }
 
-categorie_update:
+offres_update:
     path:     /{id}/update
-    defaults: { _controller: "SuiviVenteBundle:Categorie:update" }
+    defaults: { _controller: "SuiviVenteBundle:Offres:update" }
     methods:  [POST, PUT]
 
-categorie_delete:
+offres_delete:
     path:     /{id}/delete
-    defaults: { _controller: "SuiviVenteBundle:Categorie:delete" }
+    defaults: { _controller: "SuiviVenteBundle:Offres:delete" }
     methods:  [POST, DELETE]

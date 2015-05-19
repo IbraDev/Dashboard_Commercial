@@ -3,6 +3,9 @@
 namespace Suivi\SuiviBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Suivi\SuiviBundle\Form\VenteForm;
+use Suivi\SuiviBundle\Entity\Vente1;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -17,10 +20,30 @@ class DefaultController extends Controller
     }
     public function chefAction()
     {
-        return $this->render('SuiviVenteBundle:Default:chef.html.twig');
+        $message='';
+        $vente=new Vente1();
+
+        $form = $this->get('form.factory')->create(new  VenteForm(),$vente);
+        $request = $this->get('request');//recupere de donner de formuliare etdestingue la methode get ou post
+
+        if ($request->getMethod() == 'POST') {
+
+
+            $form->bind($request);//ajouter le contenu dans la base de donner
+            if ($form->isValid()) {
+                $message='Ajout effectué avec succès';
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($vente);
+                $em->flush();
+                $vente=new Vente1();
+                $form = $this->get('form.factory')->create(new  VenteForm(),$vente);
+
+            }
+        }
+        return $this->render('SuiviVenteBundle:Default:ajoutventechef.html.twig', array(
+            'form' => $form->createView(),'message' => $message,'vente' =>$vente
+
+        ));
     }
-     public function supAction()
-    {
-        return $this->render('SuiviVenteBundle:Default:sup.html.twig');
-    }
+    
 }

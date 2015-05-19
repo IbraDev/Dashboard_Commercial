@@ -1,5 +1,49 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends '::base.html.twig' %}
+{% block body %}
+<title>Suivi Vente | Dashboard</title>
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Profile:show_content.html.twig" %}
-{% endblock fos_user_content %}
+    {% include 'SuiviVenteBundle::header.html.twig' %}
+    {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Gestion Utilisateur
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                <li class="active">Gestion Utilisateur</li>
+                <li class="active">Profil</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <!-- Content Header (Page header) -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Mon profil</h3>
+                        </div>
+
+                        {% block fos_user_content %}
+                        {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+                        {% endblock fos_user_content %}
+
+
+                    </section>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+{% include 'SuiviVenteBundle::footer.html.twig' %}
+
+
+
+{% endblock %}

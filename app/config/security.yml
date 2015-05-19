@@ -20,38 +20,25 @@ security:
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
-        
+        dev:
+              pattern:  ^/(_(profiler|wdt)|css|images|js)/
+              security: false
+        main_login:
+            pattern:   ^/login$
+            anonymous: true
         # disables authentication for assets and the profiler, adapt it according to your needs
         main:
-            pattern: ^/
+            pattern: .*
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
             logout:       true
-            anonymous:    true
-            
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        # the login page has to be accessible for everybody
-        demo_login:
-            pattern:  ^/demo/secured/login$
-            security: false
+            anonymous: false
+            remember_me:
+                            key:        %secret%
 
-        # secures part of the application
-        demo_secured_area:
-            pattern:    ^/demo/secured/
-            # it's important to notice that in this case _demo_security_check and _demo_login
-            # are route names and that they are specified in the AcmeDemoBundle
-            form_login:
-                provider:      fos_userbundle
-                csrf_provider: form.csrf_provider
-                check_path:    fos_user_security_check
-                login_path:    fos_user_security_login
-                default_target_path: /admin
-            logout:
-                path:   fos_user_security_logout
-                target: /
+            
+        
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"

@@ -1,35 +1,54 @@
-<header>
-    <div class="content-wrapper">
-        <div class="float-left">
-            <p class="site-title"><img src="{{ asset('bundles/ocglobal/Images/logo.jpg')}}" /><span class="basline"><a href="/">Application CTN</a></span></p>
+</head>
+<body class="skin-blue">
+<div class="wrapper">
+<header class="main-header">
+    <!-- Logo -->
+    <a href="{{path('suivi_vente_admin')}}" class="logo">
+        <img src="{{asset("bundles/adminTemplate/img/logo-telecome.jpg")}}" class="user-image" alt="User Image"/>
+        Suivi de vente
+
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only"> </span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+
+            <ul class="nav navbar-nav">
+
+                <li class="dropdown user user-menu">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="user-image" alt="User Image"/>
+                        <span class="hidden-xs">{{ app.user.username }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+
+                            <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="img-circle" alt="User Image" />
+                            <p>
+                               {{ app.user.username }}
+                                <small>Direction Ben Arous</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+
+                            <div class="pull-right">
+                                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
         </div>
-        <div class="float-right">
-            <section id="login">
-                Bonjour, <span class="username"> {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
+    </nav>
 
-                    {% endif %} </span> !
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            </section>
-
-            <nav>
-                <ul id="menu">
-                    <li><a href="{{ path('oc_global_homepage')}}">Accueil</a></li>
-                    <li><a href="{{ path('oc_global_homefournisseur')}}">Fournisseur</a></li>
-                    <li><a href="{{ path('oc_global_listefacture')}}">Facture</a></li>
-                    <li><a href="{{ path('oc_global_recherche')}}">appel d&#39;offre</a></li>
-                    <li><a href="{{ path('oc_global_apropos')}}">&#192; propos de</a></li>
-                    <li><a href="{{ path('oc_global_ajouteroeration')}}">Opération</a></li>
-                    <li><a href="{{ path('oc_global_historiqueoeration')}}">Historique</a></li>
-
-                </ul>
-            </nav>
-        </div>
-    </div>
 </header>
-
-
-
-

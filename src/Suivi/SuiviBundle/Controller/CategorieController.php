@@ -34,13 +34,14 @@ class CategorieController extends Controller
      *
      */
     public function createAction(Request $request)
-    {
+    {  $message='';
         $entity = new Categorie();
        $form = $this->createForm(new CategorieType(), $entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $message='Ajou effectuée avec succée';
             $em->persist($entity);
             $em->flush();
 
@@ -50,7 +51,7 @@ class CategorieController extends Controller
         return $this->render('SuiviVenteBundle:Categorie:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-            'action'=>"Ajouter"
+            'action'=>"Ajouter",'message' => $message,
         ));
     }
 

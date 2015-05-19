@@ -2,6 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{asset ('bundles/AccueilTemplate/css/style1.css') }}" />
+        {% endblock %}
+
     </head>
     <body>
         <div>

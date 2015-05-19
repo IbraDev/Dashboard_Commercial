@@ -105,9 +105,53 @@
 
 
                     <form method="post" enctype="multipart/form-data" class="form-horizontal row-fluid">
-                        <div class="control-group">
-                            {{ form_widget(form) }}
-                        </div>
+                        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                        {# Les erreurs générales du formulaire. #}
+                        {{ form_errors(form) }}
+                        <div class="formulaire-1">
+                            <div class="date-vente">
+                                {{ form_label(form.datevente, "date") }}
+                                {{ form_errors(form.datevente) }}
+                                {{ form_widget(form.datevente) }}
+                            </div>
+                            <div class="fixe">
+                                <h2>Fixe</h2>
+                                {{ form_label(form.coupon, "Coupon 10DT") }}
+                                {{ form_errors(form.coupon) }}
+                                {{ form_widget(form.coupon) }}
+                            </div>
+                            <div class="mobile">
+                                <h2>Mobile</h2>
+                                {{ form_label(form.cssmobile, "CSS mobile") }}
+                                {{ form_errors(form.cssmobile) }}
+                                {{ form_widget(form.cssmobile) }}
+                                {{ form_label(form.tarajimobile, "Taraji Mobile") }}
+                                {{ form_errors(form.tarajimobile) }}
+                                {{ form_widget(form.tarajimobile) }}
+                                {{ form_label(form.etoile, "étoile sim") }}
+                                {{ form_errors(form.etoile) }}
+                                {{ form_widget(form.etoile) }}
+                            </div>
+                            <div class="cle">
+                                <h2>3 G</h2>
+                                {{ form_label(form.clelinktop, "Clé linktop") }}
+                                {{ form_errors(form.clelinktop) }}
+                                {{ form_widget(form.clelinktop) }}
+                                {{ form_label(form.routeur, "Routeur") }}
+                                {{ form_errors(form.routeur) }}
+                                {{ form_widget(form.routeur) }}
+                            </div>
+                            <div class="coupon">
+                                <h2>GSM</h2>
+                                {{ form_label(form.coupond, "Coupon 5Dt") }}
+                                {{ form_errors(form.coupond) }}
+                                {{ form_widget(form.coupond) }}
+                                {{ form_label(form.cartesm, "Carte gsm 20d") }}
+                                {{ form_errors(form.cartesm) }}
+                                {{ form_widget(form.cartesm) }}
+                            </div>
+
+                            {{ form_end(form) }}
 
 
 

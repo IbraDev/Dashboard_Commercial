@@ -13,14 +13,18 @@ suivi_vente_index:
 suivi_vente_admin:
     path:     /
     defaults: { _controller: SuiviVenteBundle:Default:admin }
-    
+admin_listeadmin:
+    path:     /liste-admin
+    defaults: { _controller: UtilisateurBundle:Default:admin }
+
+admin_supprimeadmin:
+    path:     /supprimeradmin
+    defaults: { _controller: UtilisateurBundle:Default:supprimeAdmin }
 suivi_vente_chef:
     path:     /chef
     defaults: { _controller: SuiviVenteBundle:Default:chef }
-    
-suivi_vente_sup:
-    path:     /sup
-    defaults: { _controller: SuiviVenteBundle:Default:sup }
+
+
     
 
     

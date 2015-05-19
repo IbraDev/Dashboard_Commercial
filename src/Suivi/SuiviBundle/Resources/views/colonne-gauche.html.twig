@@ -1,47 +1,87 @@
-<header class="main-header">
-    <!-- Logo -->
-    <a href="{{path('suivi_vente_admin')}}" class="logo"></a>
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only"> </span>
-        </a>
-        <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="img-circle" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+                <p> {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
 
-            <ul class="nav navbar-nav">
+                    {% endif %}</p>
 
-                <li class="dropdown user user-menu">
-
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Admin</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
-                        <li class="user-header">
-
-                            <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="img-circle" alt="User Image" />
-                            <p>
-                                Admin
-                                <small>Direction Ben Arous</small>
-                            </p>
-                        </li>
-                        <!-- Menu Body -->
-
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-
-                            <div class="pull-right">
-                                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
+                <a href="#"><i class="fa fa-circle text-success"></i> en ligne</a>
+            </div>
         </div>
-    </nav>
-
-</header>
+     
+         <ul class="sidebar-menu">
+            <li class="header">Menu Principale</li>
+            
+            
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-edit"></i>
+                <span>Suivi Vente</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{path('categorie')}}"><i class="fa fa-circle-o"></i> Gestion Catégorie</a></li>
+                <li><a href="{{path('offres')}}"><i class="fa fa-circle-o"></i> Gestion Offres</a></li>
+              </ul>
+            </li>
+			
+		
+            
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-edit"></i> <span>Prospective Clients</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+           
+                <li><a href="#"><i class="fa fa-circle-o"></i>Consulter Commercial</a></li>
+				 <li><a href="#"><i class="fa fa-circle-o"></i>Consulter Calendrier </a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-edit"></i> <span>Suivi Recouvrement</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i>Consulter</a></li>
+             
+              </ul>
+            </li>
+             <li class="treeview">
+              <a href="#">
+                <i class="fa fa-pie-chart"></i> <span>Statistiques</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Ventes</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Prospection</a></li>
+				<li><a href="#"><i class="fa fa-circle-o"></i> Recouvrement</a></li>
+              </ul>
+            </li>
+             <li class="treeview">
+              <a href="#">
+                <i class="fa fa-edit"></i><span>Gestion Utilisateurs</span>
+                <span></span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+               
+                  <li><a href="{{path('admin_listeadmin')}}"><i class="fa fa-circle-o"></i>Liste Utilisateurs</a></li>
+				   <li><a href="{{path('admin_listeadmin')}}"><i class="fa fa-circle-o"></i>Ajout Utilisateur</a></li>
+				   
+              </ul>
+            </li>
+         <li class="header">Option</li>
+            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-circle-o text-danger"></i>Déconnexion</a></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
