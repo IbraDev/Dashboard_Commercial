@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Suivi vente |Tunisie Telecom</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="{{asset("bundles/adminTemplate/css/bootstrap.min.css")}}" rel="stylesheet">
+    <link href="{{asset("bundles/adminTemplate/css/styles.css")}}" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">Acceuil</a>
+        </div>
+        <nav class="collapse navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#">Ventes</a>
+                </li>
+                <li>
+                    <a href="#">Statistiques</a>
+                </li>
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">Quiter</a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-right navbar-nav">
+                <li class="dropdown">
+                    Profil:Chef  Login:{{ app.user.username }}
+
+
+                    <ul class="dropdown-menu" style="padding:12px;">
+                        <form class="form-inline">
+                            <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+                        </form>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div id="masthead">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>SUIVI VENTE
+                    <p class="lead"></p>
+                </h1>
+            </div>
+            <div class="col-md-5">
+                <div class="well well-lg">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <img src="{{asset("bundles/adminTemplate/img/tt400.jpg")}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /cont -->
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="top-spacer"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <div class="panel">
+                <h1>Ajout vente</h1>
+                <div class="panel-body">
+                    {% if message %}
+                        <p class="bg-success">
+
+                            {{ message }}
+
+                        </p>
+                    {% endif %}
+
+
+                    <form method="post" enctype="multipart/form-data" class="form-horizontal row-fluid">
+                        <div class="control-group">
+                            {{ form_widget(form) }}
+                        </div>
+
+
+
+                </div><!--/col-12-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+
+
+<hr>
+
+<hr>
+
+<footer>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6">
+                <p class="pull-right">Copyright &copy; <a href="http://www.bootply.com">Tunisie Telecom</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- script references -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="{{asset("bundles/adminTemplate/js/bootstrap.min.js")}}"></script>
+
+</body>
+</html>

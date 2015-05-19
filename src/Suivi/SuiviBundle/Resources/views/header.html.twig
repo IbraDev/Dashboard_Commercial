@@ -1,0 +1,35 @@
+<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title"><img src="{{ asset('bundles/ocglobal/Images/logo.jpg')}}" /><span class="basline"><a href="/">Application CTN</a></span></p>
+        </div>
+        <div class="float-right">
+            <section id="login">
+                Bonjour, <span class="username"> {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a href="{{ path('fos_user_profile_show') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
+
+                    {% endif %} </span> !
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            </section>
+
+            <nav>
+                <ul id="menu">
+                    <li><a href="{{ path('oc_global_homepage')}}">Accueil</a></li>
+                    <li><a href="{{ path('oc_global_homefournisseur')}}">Fournisseur</a></li>
+                    <li><a href="{{ path('oc_global_listefacture')}}">Facture</a></li>
+                    <li><a href="{{ path('oc_global_recherche')}}">appel d&#39;offre</a></li>
+                    <li><a href="{{ path('oc_global_apropos')}}">&#192; propos de</a></li>
+                    <li><a href="{{ path('oc_global_ajouteroeration')}}">Opération</a></li>
+                    <li><a href="{{ path('oc_global_historiqueoeration')}}">Historique</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+
+
